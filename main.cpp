@@ -255,17 +255,15 @@ void Challenge14()
 {
     system("cls");
 
-    cout << "\n\t14. Balanced Parentheses";
-    cout << "\n\t" << string(70, char(196)) << "\n";
+    cout << "14. Balanced Parentheses\n";
+    cout << string(120, char(196)) << "\n\n";
 
-    // Get string from user
-    string text = inputString("\n\tEnter a string to check: ", true);
+    string text = inputString("Enter a string with parentheses (): ", true);
 
-    // Check result
     if (hasBalancedParentheses(text))
-        cout << "\n\tThe string has balanced parentheses.\n";
+        cout << "\nThe input string has balanced paretheneheses.\n";
     else
-        cout << "\n\tThe string does NOT have balanced parentheses.\n";
+        cout << "\nThe input string does not have balanced paretheneheses.\n";
 }
 
 bool hasBalancedParentheses(const string& text)
