@@ -1,3 +1,7 @@
+//Name: Pablo Lopez worked with Kevin Ortiz and Ricardo Salgado
+//Date: 05/10/2026
+//Description: Chapter 19 Assignments CMPR 121
+
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -55,7 +59,7 @@ int menuOption()
     system("cls");
 
     // Main menu display
-    cout << "\n\tCMPR 121 - Chapter 19 Stacks and Queues by Diana Contreras";
+    cout << "\n\t CMPR121: Chapter 19 - Stacks and Queues by Pablo Lopez 05/10/2026";
     cout << "\n\t" << string(100, char(205));
     cout << "\n\t\t 2. Dynamic Stack Template";
     cout << "\n\t\t 4. Dynamic Queue Template";
