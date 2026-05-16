@@ -1,7 +1,3 @@
-//Name: Pablo Lopez worked with Kevin Ortiz and Ricardo Salgado
-//Date: 05/10/2026
-//Description: Chapter 19 Assignments CMPR 121
-
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -59,7 +55,7 @@ int menuOption()
     system("cls");
 
     // Main menu display
-    cout << "\n\tCCMPR121: Chapter 19 - Assignments by Pablo Lopez 05/10/2026";
+    cout << "\n\tCMPR 121 - Chapter 19 Stacks and Queues by Diana Contreras";
     cout << "\n\t" << string(100, char(205));
     cout << "\n\t\t 2. Dynamic Stack Template";
     cout << "\n\t\t 4. Dynamic Queue Template";
@@ -101,6 +97,7 @@ void Challenge2()
 
     int poppedNumber = 0;
 
+    // Pop all values
     while (numberStack.pop(poppedNumber))
         cout << poppedNumber << " ";
 
@@ -115,6 +112,7 @@ void Challenge2()
 
     cout << "\n\tPushing strings onto another stack: Red, Green, Blue\n";
 
+    // Push string values
     wordStack.push("Red");
     wordStack.push("Green");
     wordStack.push("Blue");
@@ -142,6 +140,7 @@ void Challenge4()
 
     cout << "\n\tEnqueuing doubles into the queue: 12.5, 25.75, 40.25\n";
 
+    // Add values to queue
     numberQueue.enqueue(12.5);
     numberQueue.enqueue(25.75);
     numberQueue.enqueue(40.25);
@@ -172,6 +171,7 @@ void Challenge4()
     if (!numberQueue.dequeue(removedValue))
         cout << "\tThe queue is empty, so nothing else can be dequeued.\n";
 
+    // Create string queue
     MyQueue<string> wordQueue;
 
     cout << "\n\tEnqueuing strings into another queue: Hydrogen, Oxygen, Carbon\n";
@@ -197,18 +197,18 @@ void Challenge9()
     system("cls");
 
     cout << "\n\t9. File Reverser";
-    cout << "\n\t" << string(70, char(196)) << "\n";
+    cout << "\n\t" << string(70, char(196)) << "\n\n";
 
-    // Get file names
-    string inputFileName = inputString("\n\tEnter the first/input text file name: ", false);
-    string outputFileName = inputString("\tEnter the second/output text file name: ", false);
+    // File names used for this challenge
+    string inputFileName = "INPUT.DAT";
+    string outputFileName = "OUTPUT.DAT";
 
     // Open input file
     ifstream inputFile(inputFileName, ios::in | ios::binary);
 
     if (!inputFile)
     {
-        cout << "\n\tERROR: File, " << inputFileName << " cannot be opened.\n";
+        cout << "\tERROR: File, " << inputFileName << " cannot be opened.\n";
         return;
     }
 
@@ -216,12 +216,14 @@ void Challenge9()
     MyStack<char> characterStack;
 
     char character = '\0';
-    int characterCount = 0;
 
+    cout << "\tReading characters from " << inputFileName << " into the stack...\n";
+
+    // Read and display each character
     while (inputFile.get(character))
     {
         characterStack.push(character);
-        characterCount++;
+        cout << character << " ";
     }
 
     inputFile.close();
@@ -231,17 +233,22 @@ void Challenge9()
 
     if (!outputFile)
     {
-        cout << "\n\tERROR: File, " << outputFileName << " cannot be created.\n";
+        cout << "\n\n\tERROR: File, " << outputFileName << " cannot be created.\n";
         return;
     }
 
+    cout << "\n\n\tWriting stack of characters to " << outputFileName << "...\n";
+
+    // Pop, write, and display each character
     while (characterStack.pop(character))
+    {
         outputFile.put(character);
+        cout << character << " ";
+    }
 
     outputFile.close();
 
-    cout << "\n\t" << characterCount << " character(s) were read from " << inputFileName << ".\n";
-    cout << "\tThe reversed contents were saved to " << outputFileName << ".\n";
+    cout << "\n";
 }
 
 void Challenge14()
@@ -251,6 +258,7 @@ void Challenge14()
     cout << "\n\t14. Balanced Parentheses";
     cout << "\n\t" << string(70, char(196)) << "\n";
 
+    // Get string from user
     string text = inputString("\n\tEnter a string to check: ", true);
 
     // Check result
@@ -266,13 +274,15 @@ bool hasBalancedParentheses(const string& text)
     MyStack<char> parentheses;
 
     char removedParenthesis = '\0';
-
+    
+    // Check each character
     for (char character : text)
     {
         if (character == '(')
             parentheses.push(character);
         else if (character == ')')
         {
+            // No matching left parenthesis
             if (!parentheses.pop(removedParenthesis))
                 return false;
         }
