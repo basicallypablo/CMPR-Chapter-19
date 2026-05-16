@@ -245,7 +245,7 @@ void Challenge9()
     while (characterStack.pop(character))
     {
         outputFile.put(character);
-        cout << character;
+        cout << character << " ";
     }
 
     outputFile.close();
