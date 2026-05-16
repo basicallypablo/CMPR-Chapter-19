@@ -218,12 +218,13 @@ void Challenge9()
     char character = '\0';
 
     cout << "\tReading characters from " << inputFileName << " into the stack...\n";
+    cout << "\t";
 
     // Read and display each character
     while (inputFile.get(character))
     {
         characterStack.push(character);
-        cout << character << " ";
+        cout << character;
     }
 
     inputFile.close();
@@ -238,12 +239,13 @@ void Challenge9()
     }
 
     cout << "\n\n\tWriting stack of characters to " << outputFileName << "...\n";
+    cout << "\t";
 
     // Pop, write, and display each character
     while (characterStack.pop(character))
     {
         outputFile.put(character);
-        cout << character << " ";
+        cout << character;
     }
 
     outputFile.close();
@@ -272,7 +274,7 @@ bool hasBalancedParentheses(const string& text)
     MyStack<char> parentheses;
 
     char removedParenthesis = '\0';
-    
+
     // Check each character
     for (char character : text)
     {
